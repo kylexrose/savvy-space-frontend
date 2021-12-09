@@ -1,7 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 function Courses() {
+    const user = useSelector(state => state);
+    console.log(user)
+    // const getCourseList;
     return (
         <div className="mainContent">
             <h1 className="pageTitle">My Courses</h1>

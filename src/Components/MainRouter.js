@@ -7,12 +7,11 @@ import Assignments from './Assignments/Assignments'
 import CourseOverview from './CourseOverview'
 import RightContent from './RightContent'
 import Nav from './Nav'
-import Header from './Header'
 
-function MainRouter(props) {
+function MainRouter() {
+    console.log("hello")
     return (
         <Router>
-            <Header/>
             <div className="body">
                 <Nav/>
                 <Routes>

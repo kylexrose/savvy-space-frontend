@@ -1,27 +1,27 @@
+import Axios from '../Utils/Axios'
 
 
-export const logInActionCreator = ({email, password}) => 
+export const logInActionCreator = ({username, password}) => 
   async (dispatch, getState) => {
-    console.log('logInActionCreator running');
     try {
-      const user = await logInUser(email, password);
-      dispatch({type: LOG_IN_ACTION, payload: {user: user}});
+      const user = await Axios.post('/users/login', { username, password });
+      dispatch({type: 'LOG_IN_ACTION', payload: user.data});
     } catch(error){
-      console.log('error');
+      console.log(error);
     }
   }
 
-export const userReducer = (state = null, action) => {
-  if(action.type === LOG_IN_ACTION){
-    const { payload } = action;
 
+  const stateInLocalStorage = JSON.parse(window.localStorage.getItem('applicationState'));
+
+  const initialState = (stateInLocalStorage && stateInLocalStorage.user) || null;
+
+
+export const userReducer = (state = initialState, action) => {
+  if(action.type === "LOG_IN_ACTION"){
+    const { payload } = action;
+    console.log(payload.user)
     return payload.user
   }
-
-  if(action.type === UPDATE_USER_FAVORITES){
-
-    return {...state, favoriteItems: action.payload.favoriteItems }
-  }
-
   return state;
 };

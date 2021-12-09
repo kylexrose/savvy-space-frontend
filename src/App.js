@@ -1,16 +1,31 @@
 
 import './App.css';
-import Header from './Components/Header';
-import Nav from './Components/Nav'
 import MainRouter from './Components/MainRouter'
-import RightContent from './Components/RightContent';
+import { useSelector } from 'react-redux'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Header from './Components/Header'
+import Login from './Components/Login'
+
 
 function App() {
-  return (
-    <div className="App">
-        <MainRouter/>
-    </div>
-  );
-}
+  const reduxState = useSelector(state => state);
 
-export default App;
+window.localStorage.setItem('applicationState', JSON.stringify(reduxState))
+
+  return (
+
+    <div>
+      <MainRouter/>
+    </div>
+    // <Router>
+    //     <Header/>
+    //       <Routes>
+    //         {/* <Route path = "/login" element={<Login/>}/> */}
+    //         <Route element = {<MainRouter/>} />
+    //       </Routes>
+    //   </Router>
+      
+      );
+    }
+    
+    export default App;
