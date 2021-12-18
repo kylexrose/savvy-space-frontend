@@ -5,27 +5,22 @@ import Courses from './Courses'
 import Grades from './Grades'
 import Assignments from './Assignments/Assignments'
 import CourseOverview from './CourseOverview'
-import RightContent from './RightContent'
-import Nav from './Nav'
+import Login from './Login'
+import Header from './Header'
 
 function MainRouter() {
-    console.log("hello")
     return (
         <Router>
-            <div className="body">
-                <Nav/>
-                <Routes>
-                    <Route path="/courses" element={<Courses/>}/>
-                    <Route path="/profile" element={<Profile/>}/>
-                    <Route path="/grades" element={<Grades/>}/>
-                    <Route path="/course-overview" element={<CourseOverview/>}/>
-                    <Route path="/assignments" element={<Assignments/>}/>
-                </Routes>
-                <RightContent/>
-            </div>
-            
+            <Header/>
+            <Routes>
+                <Route path="/login" element={<Login/>}/>             
+                <Route path="/courses" element={<Courses/>}/>
+                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/grades" element={<Grades/>}/>
+                <Route path="/course-overview" element={<CourseOverview/>}/>
+                <Route path="/assignments" element={<Assignments/>}/>
+            </Routes>
         </Router>
-        
     )
 }
 

@@ -1,21 +1,40 @@
-import Axios from '../Utils/Axios'
+import Axios from '../Utils/Axios';
 
+const stateInLocalStorage = JSON.parse(window.localStorage.getItem('applicationState'));
+const initialState = (stateInLocalStorage && stateInLocalStorage.notes) || null;
 
-export const saveNotesActionCreator = ({user_id, notesJSON}) => 
+export const getNotesActionCreator = (notes) => 
   async (dispatch, getState) => {
     try {
-      const notes = await Axios.post('/users/login', { user_id, notesJSON });
-      dispatch({type: 'SAVE_NOTES_ACTION', payload: notes.data});
+      dispatch({type: 'GET_NOTES_ACTION', payload: notes});
     } catch(error){
       console.log(error);
     }
   }
 
-export const notesReducer = (state = null, action) => {
+export const saveNotesActionCreator = (user_id, notes) => 
+  async (dispatch, getState) => {
+    try {
+      console.log(notes)
+      const foundNotes = await Axios.put('/student-notes/edit-note', { user_id, note_json: notes });
+      dispatch({type: 'SAVE_NOTES_ACTION', payload: foundNotes.data.notes});
+    } catch(error){
+      console.log(error);
+    }
+  }
+
+export const notesReducer = (state = initialState, action) => {
   if(action.type === "SAVE_NOTES_ACTION"){
     const { payload } = action;
-    console.log(payload.notes)
-    return payload.notes
+    return payload;
+  }
+  if(action.type === "GET_NOTES_ACTION"){
+    console.log(action.payload)
+    const { payload } = action;
+    return payload;
+  }
+  if(action.type === "LOG_OUT_ACTION"){
+    return null
   }
   return state;
 };

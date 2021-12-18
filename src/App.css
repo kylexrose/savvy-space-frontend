@@ -1,12 +1,12 @@
 html, body{
   height: 100%;
   width: 100%;
+  overflow-y: hidden;
 }
 
 .App{
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
 }
 
 .root{
@@ -44,7 +44,6 @@ html, body{
 .loginRightSide{
   display: flex;
   flex-direction: column;
-
   height: 100%;
   width: 200px;
   z-index: 2;
@@ -53,6 +52,10 @@ html, body{
 .loginInputs{
   display: flex;
   flex-direction: inherit;
+}
+
+.errorMessage{
+  color: red;
 }
 
 .loginButton{
@@ -73,10 +76,22 @@ html, body{
   margin: -20px;
 }
 
+.username{
+  position: fixed;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 65%;
+}
+
+.logout{
+  margin-left: 40px;
+}
+
 .leftNav{
   display: flex;
   flex-direction: column;
   width:15%;
+  height: 100%;
   height: inherit;
   background-color: #77B28C;
   box-shadow: #5e8d6e 2px 0 5px;

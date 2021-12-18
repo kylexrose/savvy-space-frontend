@@ -1,7 +1,10 @@
 import React from 'react'
+import UIForm from '../Layout/UIForm'
 
 function Assignments() {
     return (
+        <UIForm>
+
         <div className="mainContent">
             <h1 className="pageTitle">Assignments</h1>
             <div className="assignmentList">
@@ -33,6 +36,7 @@ function Assignments() {
             </div>
             
         </div>
+        </UIForm>
     )
 }
 
