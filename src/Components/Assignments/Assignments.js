@@ -33,7 +33,7 @@ function Assignments() {
             assignmentList.map(assignment =>{
                 return(
                     <div className="assignmentBox" key={assignment.assignment_id}>
-                        <p className="assignmentBold">{assignment.assignment_name}  |  <span className="pointReference">{`${assignment.grade} / ${assignment.total_points}pts`}</span>  |  Due: {'01/10/20'}</p>
+                        <p className="assignmentBold">{assignment.assignment_name}  |  <span className="pointReference">{`${assignment.grade ? assignment.grade : "-"} / ${assignment.total_points}pts`}</span>  |  Due: {'01/10/20'}</p>
                         <p className="assignmentDescription">{assignment.details}</p>
                         <button>Upload</button>
                     </div>
