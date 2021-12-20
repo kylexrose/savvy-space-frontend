@@ -29,17 +29,16 @@ function Courses() {
 
     function renderCourseList(){
         return(
-        courseList.map(course =>{
-            return(
-                <Link className="courseBox"
-                    key= {course.course_id}
-                    to = "/course-overview"
-                    state = {{course}}>
-                    <p className="courseTitle">{course.course_name}<br/>
-                    {course.course_code}</p>
-                </Link>
-            )
-        })
+            courseList.map(course =>{
+                return(
+                    <Link className="courseBox"
+                        key= {course.course_id}
+                        to = {`/course-overview/${course.course_id}`}>
+                        <p className="courseTitle">{course.course_name}<br/>
+                        {course.course_code}</p>
+                    </Link>
+                )
+            })
         )}
 
     // const getCourseList;

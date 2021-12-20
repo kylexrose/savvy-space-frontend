@@ -17,8 +17,9 @@ function MainRouter() {
                 <Route path="/courses" element={<Courses/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/grades" element={<Grades/>}/>
-                <Route path="/course-overview" element={<CourseOverview/>}/>
-                <Route path="/assignments" element={<Assignments/>}/>
+                <Route path="/course-overview/" element={<CourseOverview/>}/>
+                <Route path="/course-overview/:course_id" element={<CourseOverview/>}/>
+                <Route path="/course-overview/:course_id/assignments" element={<Assignments/>}/>
             </Routes>
         </Router>
     )

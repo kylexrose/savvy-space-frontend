@@ -30,7 +30,6 @@ function Login() {
         try{
             const user = await Axios.post('/users/login', { username, password });
             const notes = await Axios.post('/student-notes/get-notes-by-user-id', {user_id : user.data.user_id})
-            console.log(notes)
             dispatch(
                 logInActionCreator(user.data)
             )

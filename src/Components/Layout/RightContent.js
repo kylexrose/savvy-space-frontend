@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { saveNotesActionCreator } from '../../Redux/noteState';
+import Axios from '../../Utils/Axios';
 
 function RightContent() {
     const reduxNotes = useSelector(state => state.notes)
@@ -8,11 +9,24 @@ function RightContent() {
     const dispatch = useDispatch();
     const [notes, setNotes] = useState(reduxNotes)
 
+    useEffect(() => {
+        async function getNotesFromDB(){
+            try{
+                const foundNotes = await Axios.post('/student-notes/get-notes-by-user-id', {user_id : user.user_id})
+                handleDispatch(foundNotes.data.notes.note_json);
+                setNotes(foundNotes.data.notes.note_json)
+            }catch(e){
+                console.log(e.message)
+            }
+        }
+        getNotesFromDB();
+    }, [])
+
     function handleNotesChange(e){
         setNotes(e.target.value)
     }
 
-    function handleDispatch(){
+    function handleDispatch(notes){
         dispatch(saveNotesActionCreator(user.user_id, notes))
     }
 
@@ -32,7 +46,7 @@ function RightContent() {
                 rows="15" 
                 value = {notes ?? ""}
                 onChange={handleNotesChange}
-                onBlur={handleDispatch}/>
+                onBlur={() => handleDispatch(notes)}/>
             </div>
         </div>
     )

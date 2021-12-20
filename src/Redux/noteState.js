@@ -15,7 +15,6 @@ export const getNotesActionCreator = (notes) =>
 export const saveNotesActionCreator = (user_id, notes) => 
   async (dispatch, getState) => {
     try {
-      console.log(notes)
       const foundNotes = await Axios.put('/student-notes/edit-note', { user_id, note_json: notes });
       dispatch({type: 'SAVE_NOTES_ACTION', payload: foundNotes.data.notes});
     } catch(error){
@@ -29,7 +28,6 @@ export const notesReducer = (state = initialState, action) => {
     return payload;
   }
   if(action.type === "GET_NOTES_ACTION"){
-    console.log(action.payload)
     const { payload } = action;
     return payload;
   }
