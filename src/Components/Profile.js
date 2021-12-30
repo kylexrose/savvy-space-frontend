@@ -38,8 +38,8 @@ function Profile() {
                     <p>Email: <span>{user.email}</span></p>
                 </div>}
                 <div className="profileControls">
-                    <button>Reset Password</button>
-                    <button>Change Email</button>
+                    {/* <button>Reset Password</button>
+                    <button>Change Email</button> */}
                 </div>
             </div>
         </UIForm>
