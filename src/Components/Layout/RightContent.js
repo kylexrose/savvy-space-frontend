@@ -16,6 +16,7 @@ function RightContent() {
                 handleDispatch(foundNotes.data.notes.note_json);
                 setNotes(foundNotes.data.notes.note_json)
             }catch(e){
+                //needs error handling
                 console.log(e.message)
             }
         }

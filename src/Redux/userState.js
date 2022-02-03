@@ -6,6 +6,7 @@ export const logInActionCreator = ({user}) =>
     try {
       dispatch({type: 'LOG_IN_ACTION', payload: user});
     } catch(error){
+      //needs error handling
       console.log(error);
     }
   }
@@ -15,6 +16,7 @@ async (dispatch, getState) => {
   try {
     dispatch({type: 'LOG_OUT_ACTION'});
   } catch(error){
+    //needs error handling
     console.log(error);
   }
 }
@@ -25,7 +27,6 @@ export const userReducer = (state = initialState, action) => {
     return payload;
   }
   if(action.type === "LOG_OUT_ACTION"){
-    console.log("user logged out");
     window.localStorage.removeItem('applicationState')
     return null
   }

@@ -8,6 +8,7 @@ export const getNotesActionCreator = (notes) =>
     try {
       dispatch({type: 'GET_NOTES_ACTION', payload: notes});
     } catch(error){
+      //needs error handling
       console.log(error);
     }
   }
@@ -18,6 +19,7 @@ export const saveNotesActionCreator = (user_id, notes) =>
       const foundNotes = await Axios.put('/student-notes/edit-note', { user_id, note_json: notes });
       dispatch({type: 'SAVE_NOTES_ACTION', payload: foundNotes.data.notes});
     } catch(error){
+      //needs error handling
       console.log(error);
     }
   }

@@ -26,8 +26,8 @@ function Grades() {
                 courseListWithGrade.push({gradeInCourse: course.data.gradeInCourse, courseName: courseList[i].course_name, courseCode : courseList[i].course_code})
             }
             setCourseList(courseListWithGrade)
-
         }catch(e){
+            //needs error handling
             console.log(e)
         }
     }

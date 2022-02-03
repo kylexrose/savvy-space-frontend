@@ -23,6 +23,7 @@ function Courses() {
             const courses = await Axios.post('/enrollments/find-courses-by-student-id', {student_id: user.student_id})
             setCourseList(courses.data.courseList);
         }catch(e){
+            //needs error handling
             console.log(e)
         }
     }

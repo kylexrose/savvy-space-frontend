@@ -38,7 +38,6 @@ function Login() {
             )
             navigate('/courses')
         }catch(err){
-            console.log(err.response.status)
             if(err.response.status === 400){
                 setErrorMessage("Please check Username and Password")
             }

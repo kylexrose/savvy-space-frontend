@@ -16,6 +16,7 @@ function Assignments() {
                 const assignmentList = await Axios.post("assigned-work/get-student-assignments-by-course", {student_id : user.student_id, course_id})
                 setAssignmentList(assignmentList.data.studentAssignments);
             }catch(e){
+                //needs error handling
                 console.log(e.message)
             }}
         getAssignments();

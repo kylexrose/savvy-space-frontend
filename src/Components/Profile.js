@@ -24,6 +24,7 @@ function Profile() {
             setStudentInfo(studentInfo.data.foundStudent)
             setBirthday(studentInfo.data.foundStudent.birthday.slice(0,10))
         }catch(e){
+            //needs error handling
             console.log(e.message)
         }
     }
